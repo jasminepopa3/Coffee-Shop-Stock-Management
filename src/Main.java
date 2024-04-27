@@ -271,7 +271,7 @@ public class Main {
                     System.out.println("Introdu nr. de telefon al furnizorului: ");
                     String telefonFurnizor = scanner.nextLine();
                     Furnizor furnizorNou = new Furnizor(numeFurnizor,adresaFurnizor,contBancarFurnizor,emailFurnizor,telefonFurnizor);
-                    furnizorService1.adaugaFurnizor(furnizorNou);
+                    furnizorService1.add(furnizorNou);
                     System.out.println("Furnizor adaugat cu succes: " + furnizorNou);
                     break;
                 case 6:
@@ -289,15 +289,15 @@ public class Main {
                     System.out.println("Introdu nr. de telefon furnizorului de actualizat: ");
                     String telefonFurnizorDeActualizat = scanner.nextLine();
                     Furnizor furnizorActualizat = new Furnizor(numeFurnizorDeActualizat,adresaFurnizorDeActualizat,contBancarFurnizorDeActualizat,emailFurnizorDeActualizat,telefonFurnizorDeActualizat);
-                    furnizorService1.actualizeazaFurnizor(idFurnizorDeActualizat,furnizorActualizat);
+                    furnizorService1.update(idFurnizorDeActualizat,furnizorActualizat);
                     break;
                 case 7:
                     System.out.println("Introdu id-ul furnizorului de sters: ");
                     int idFurnizorDeSters = scanner.nextInt();
-                    furnizorService1.stergeFurnizor(idFurnizorDeSters);
+                    furnizorService1.remove(idFurnizorDeSters);
                     break;
                 case 8:
-                    furnizorService1.afiseazaFurnizori();
+                    furnizorService1.display();
                     break;
                 case 9:
                     System.out.println("Introdu numele produsului alimentar de adaugat: ");
