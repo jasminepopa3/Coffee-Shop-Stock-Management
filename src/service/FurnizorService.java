@@ -19,33 +19,40 @@ public class FurnizorService implements CrudService<Furnizor> {
         this.furnizori = new ArrayList<>();
     }
 
-    //metoda pt adaugare furnizor
-    public void adaugaFurnizor(Furnizor furnizor){
-        furnizori.add(furnizor);
-    }
-
-
-    public void actualizeazaFurnizor(int id, Furnizor furnizor){
-        for(int i=0;i<furnizori.size();i++){
-            if(furnizori.get(i).getId() == id){
-                furnizori.set(i, furnizor);
-                System.out.println("Furnizorul cu id-ul " + id + " a fost actualizat cu succes.");
-                return;
-            }
-        }
-        System.out.println("Furnizorul cu id-ul " + id + " nu a fost găsită.");
-    }
-
 
     public Furnizor getFurnizorByID(int idFurnizor){
-        for(int i = 0; i < furnizori.size(); i++){
-            if(furnizori.get(i).getId() == idFurnizor){
-                return furnizori.get(i);
+
+        String query = "SELECT * FROM furnizor WHERE id = ?";
+
+        Connection connection = DatabaseConfiguration.getDatabaseConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, idFurnizor);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String nume = resultSet.getString("nume");
+                String adresa = resultSet.getString("adresa");
+                String contBancar = resultSet.getString("contBancar");
+                String email = resultSet.getString("email");
+                String nrTelefon = resultSet.getString("nrTelefon");
+                int id = resultSet.getInt("id");
+
+                return new Furnizor(nume, adresa, contBancar, email, nrTelefon);
+            } else {
+                System.out.println("Furnizorul cu id-ul " + idFurnizor + " nu a fost găsit.");
+                return null;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
-        System.out.println("Furnizorul nu a fost gasit.");
-        return null;
     }
+
+
+
+
 
 
     @Override
