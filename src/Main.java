@@ -20,7 +20,7 @@ public class Main {
                 String selectSql = "select * from categorie;";
                 ResultSet resultSet = stmt.executeQuery(selectSql);
                 while (resultSet.next()) {
-                    System.out.println("Id:" + resultSet.getString(1));
+                    System.out.println("Id-ul categoriei:" + resultSet.getString(1));
                     System.out.println("Denumire:" + resultSet.getString(2));
                     System.out.println("Descriere:" + resultSet.getString(3));
                 }
