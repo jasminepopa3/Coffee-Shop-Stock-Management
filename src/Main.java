@@ -12,26 +12,7 @@ import service.*;
 public class Main {
     public static void main(String[] args) {
 
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffeeshop?useSSL=false", "root", "#Fluturialbi18");
-            System.out.println("conexiune stabilita\n");
-            try {
-                Statement stmt = connection.createStatement();
-                String selectSql = "select * from categorie;";
-                ResultSet resultSet = stmt.executeQuery(selectSql);
-                while (resultSet.next()) {
-                    System.out.println("Id-ul categoriei:" + resultSet.getString(1));
-                    System.out.println("Denumire:" + resultSet.getString(2));
-                    System.out.println("Descriere:" + resultSet.getString(3));
-                }
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-            System.out.println("fara conexiune db");
-        }
 
         /* acestea au fost testele mele inainte sa incep sa creez meniul
         // Crearea furnizorilor
@@ -187,18 +168,18 @@ public class Main {
 
         // Afișare categorii
         System.out.println("Categorii:");
-        categorieService.afiseazaCategorii();
+        categorieService.displayCategories();
 
         // Actualizare categorie
         Categorie categorieActualizata = new Categorie("Băuturi", "Băuturi calde și reci");
         categorieService.actualizeazaCategorie(categorie1.getIdCategorie(), categorieActualizata);
         System.out.println("\nCategorii după actualizare:");
-        categorieService.afiseazaCategorii();
+        categorieService.displayCategories();
 
         // Ștergere categorie
         categorieService.stergeCategorie(categorie2.getIdCategorie());
         System.out.println("\nCategorii după ștergere:");
-        categorieService.afiseazaCategorii();
+        categorieService.displayCategories();
          */
 
 
@@ -255,9 +236,8 @@ public class Main {
                     String nume = scanner.nextLine();
                     System.out.print("Introdu descrierea categoriei: ");
                     String descriere = scanner.nextLine();
-                    Categorie categorieNoua = new Categorie(nume, descriere);
-                    categorieService1.adaugaCategorie(categorieNoua);
-                    System.out.println("Categorie creată cu succes: " + categorieNoua);
+                    categorieService1.insertCategory(nume, descriere);
+                    System.out.println("Categorie creată cu succes: " + nume);
                     break;
                 case 2:
                     System.out.print("Introdu id-ul categoriei de actualizat: ");
@@ -267,16 +247,15 @@ public class Main {
                     String numeNou = scanner.nextLine();
                     System.out.print("Introdu noua descriere a categoriei: ");
                     String descriereNoua = scanner.nextLine();
-                    Categorie categorieActualizata1 = new Categorie(numeNou, descriereNoua);
-                    categorieService1.actualizeazaCategorie(idActualizare, categorieActualizata1);
+                    categorieService1.updateCategory(idActualizare, numeNou, descriereNoua);
                     break;
                 case 3:
                     System.out.print("Introdu id-ul categoriei de șters: ");
                     int idStergere = scanner.nextInt();
-                    categorieService1.stergeCategorie(idStergere);
+                    categorieService1.removeCategory(idStergere);
                     break;
                 case 4:
-                    categorieService1.afiseazaCategorii();
+                    categorieService1.displayCategories();
                     break;
                 case 5:
                     System.out.println("Introdu numele furnizorului: ");
