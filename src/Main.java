@@ -236,8 +236,9 @@ public class Main {
                     String nume = scanner.nextLine();
                     System.out.print("Introdu descrierea categoriei: ");
                     String descriere = scanner.nextLine();
-                    categorieService1.insertCategory(nume, descriere);
-                    System.out.println("Categorie creată cu succes: " + nume);
+                    Categorie categorie = new Categorie(nume, descriere);
+                    categorieService1.add(categorie);
+                    System.out.println("Categorie creată cu succes: " + categorie);
                     break;
                 case 2:
                     System.out.print("Introdu id-ul categoriei de actualizat: ");
@@ -247,15 +248,16 @@ public class Main {
                     String numeNou = scanner.nextLine();
                     System.out.print("Introdu noua descriere a categoriei: ");
                     String descriereNoua = scanner.nextLine();
-                    categorieService1.updateCategory(idActualizare, numeNou, descriereNoua);
+                    Categorie categorieNoua = new Categorie(numeNou, descriereNoua);
+                    categorieService1.update(idActualizare, categorieNoua);
                     break;
                 case 3:
                     System.out.print("Introdu id-ul categoriei de șters: ");
                     int idStergere = scanner.nextInt();
-                    categorieService1.removeCategory(idStergere);
+                    categorieService1.remove(idStergere);
                     break;
                 case 4:
-                    categorieService1.displayCategories();
+                    categorieService1.display();
                     break;
                 case 5:
                     System.out.println("Introdu numele furnizorului: ");

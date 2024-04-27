@@ -1,6 +1,7 @@
 package service;
 
 import config.DatabaseConfiguration;
+import interfaces.CrudService;
 import model.Categorie;
 import model.Furnizor;
 
@@ -8,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategorieService {
+public class CategorieService implements CrudService<Categorie> {
     private List<Categorie> categorii;
 
     //când cream o nouă instanță a clasei CategorieService,
@@ -27,59 +28,8 @@ public class CategorieService {
 
 
 
-    // Metoda pentru adăugarea unei categorii
-
-    public void insertCategory(String denumire, String descriere) {
-        String insertPersonSql = "INSERT INTO categorie(numeCategorie, descriere) VALUES(?, ?)";
-
-        Connection connection = DatabaseConfiguration.getDatabaseConnection();
-
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(insertPersonSql);
-            preparedStatement.setString(1, denumire);
-            preparedStatement.setString(2, descriere);
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Metoda pentru actualizarea unei categorii
-
-    public void updateCategory(int id, String denumire, String descriere) {
-        String updateCategorySQL = "UPDATE categorie SET numeCategorie=?, descriere=? WHERE idCategorie=?";
-
-        Connection connection = DatabaseConfiguration.getDatabaseConnection();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(updateCategorySQL);
-            preparedStatement.setString(1, denumire);
-            preparedStatement.setString(2, descriere);
-            preparedStatement.setInt(3, id);
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Metoda pentru ștergerea unei categorii
-    public void removeCategory(int id) {
-        String removeCategorySQL = "DELETE FROM categorie WHERE idCategorie=?\n";
-
-        Connection connection = DatabaseConfiguration.getDatabaseConnection();
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(removeCategorySQL);
-            preparedStatement.setInt(1, id);
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Metoda pentru afișarea tuturor categoriilor
-    public void displayCategories() {
+    @Override
+    public void display() {
         String selectSql = "SELECT * FROM categorie";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
@@ -98,6 +48,58 @@ public class CategorieService {
             e.printStackTrace();
         }
     }
+
+
+    @Override
+    public void add(Categorie categorie) {
+        String insertCategorySql = "INSERT INTO categorie(numeCategorie, descriere) VALUES(?, ?)";
+
+        Connection connection = DatabaseConfiguration.getDatabaseConnection();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(insertCategorySql);
+            preparedStatement.setString(1, categorie.getNumeCategorie());
+            preparedStatement.setString(2, categorie.getDescriere());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void update(int id, Categorie categorie) {
+        String updateCategorySQL = "UPDATE categorie SET numeCategorie=?, descriere=? WHERE idCategorie=?";
+
+        Connection connection = DatabaseConfiguration.getDatabaseConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(updateCategorySQL);
+            preparedStatement.setString(1, categorie.getNumeCategorie());
+            preparedStatement.setString(2, categorie.getDescriere());
+            preparedStatement.setInt(3, id);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void remove(int id) {
+        String removeCategorySQL = "DELETE FROM categorie WHERE idCategorie=?\n";
+
+        Connection connection = DatabaseConfiguration.getDatabaseConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(removeCategorySQL);
+            preparedStatement.setInt(1, id);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 
 
     //de revenit asupra ei
