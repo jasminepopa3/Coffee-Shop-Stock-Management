@@ -396,7 +396,7 @@ public class Main {
 
                     //acum pot crea obiectul de tip ProdusAlimentar si sa-l adaug in lista sa
                     Retail retailNou = new Retail(numeRetail, descriereRetail, pretRetail, idCategorieRetail, idFurnizorRetail, materialRetail, stocRetailAdaugat);
-                    retailService1.adaugaRetail(retailNou);
+                    retailService1.add(retailNou);
 
                     System.out.println("Retail-ul a fost adaugat cu succes!");
                     break;
@@ -429,15 +429,15 @@ public class Main {
                     int stocRetailActualizat = scanner.nextInt();
 
                     Retail retailActualizat = new Retail(numeRetailActualizat, desccriereRetailActualizat, pretRetailActualizat, idCategorieRetailActualizat, idFurnizorRetailActualizat, materialRetailActualizat, stocRetailActualizat);
-                    retailService1.actualizeazaRetail(idRetailActualizat,retailActualizat);
+                    retailService1.update(idRetailActualizat,retailActualizat);
                     break;
                 case 15:
                     System.out.println("Introdu id-ul retail-ului de sters: ");
                     int idRetailSters = scanner.nextInt();
-                    retailService1.stergeRetail(idRetailSters);
+                    retailService1.remove(idRetailSters);
                     break;
                 case 16:
-                    retailService1.afiseazaRetails();
+                    retailService1.display();
                     break;
                 case 17:
                     System.out.println("Introdu numele produsului de vanzare: ");
