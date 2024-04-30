@@ -7,7 +7,7 @@ public class ProdusVanzare extends Produs {
     private Map<ProdusAlimentar, Double> ingredienteCantitate; // Mapare între produs și cantitatea acestuia
 
     //exclud atributul furnizor din clasa Produs
-    public ProdusVanzare(String numeProdus, String descriere, double pret, Categorie categorie, Map<ProdusAlimentar, Double> ingredienteCantitate) {
+    public ProdusVanzare(String numeProdus, String descriere, double pret, int categorie, Map<ProdusAlimentar, Double> ingredienteCantitate) {
         super(numeProdus, descriere, pret, categorie);
         this.ingredienteCantitate = new HashMap<>(ingredienteCantitate);
     }

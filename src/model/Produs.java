@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Array;
+
 //compareTo() pentru a efectua operații de sortare sau de comparație între obiectele Produs
 public class Produs implements Comparable<Produs>{
     private static int idCounter = 1;
@@ -7,11 +9,11 @@ public class Produs implements Comparable<Produs>{
     protected String numeProdus;
     protected String descriere;
     protected double pret;
-    protected Categorie categorie;
+    protected int categorie;
 
-    private Furnizor furnizor;
+    private int furnizor;
 
-    public Produs(String numeProdus, String descriere, double pret, Categorie categorie, Furnizor furnizor) {
+    public Produs(String numeProdus, String descriere, double pret, int categorie, int furnizor) {
         this.idProdus = idCounter++;
         this.numeProdus = numeProdus;
         this.descriere = descriere;
@@ -20,7 +22,7 @@ public class Produs implements Comparable<Produs>{
         this.furnizor = furnizor;
     }
 
-    public Produs(String numeProdus, String descriere, double pret, Categorie categorie) {
+    public Produs(String numeProdus, String descriere, double pret, int categorie) {
         this.idProdus = idCounter++;
         this.numeProdus = numeProdus;
         this.descriere = descriere;
@@ -55,19 +57,19 @@ public class Produs implements Comparable<Produs>{
         this.pret = pret;
     }
 
-    public Categorie getCategorie() {
+    public int getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(Categorie categorie) {
+    public void setCategorie(int categorie) {
         this.categorie = categorie;
     }
 
-    public Furnizor getFurnizor() {
+    public int getFurnizor() {
         return furnizor;
     }
 
-    public void setFurnizor(Furnizor furnizor) {
+    public void setFurnizor(int furnizor) {
         this.furnizor = furnizor;
     }
 

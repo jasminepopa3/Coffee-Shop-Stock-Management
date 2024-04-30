@@ -325,8 +325,8 @@ public class Main {
                     int stocProdus = scanner.nextInt();
 
                     //acum pot crea obiectul de tip ProdusAlimentar si sa-l adaug in lista sa
-                    ProdusAlimentar produsAlimentarNou = new ProdusAlimentar(numeProdus, descriereProdus, pretProdus, furnizorProdus, categorieProdus, dataExpirareProdus, stocProdus);
-                    produsAlimentarService1.adaugaProdus(produsAlimentarNou);
+                    ProdusAlimentar produsAlimentarNou = new ProdusAlimentar(numeProdus, descriereProdus, pretProdus, idFurnizor, idCategorie, dataExpirareProdus, stocProdus);
+                    produsAlimentarService1.add(produsAlimentarNou);
 
                     System.out.println("Produsul a fost adaugat cu succes!");
                     break;
@@ -359,16 +359,16 @@ public class Main {
                     System.out.println("Introdu cantitatea din stoc a produsului alimentar de actualizat: ");
                     int stocProdusActualizat = scanner.nextInt();
 
-                    ProdusAlimentar produsAlimentarActualizat = new ProdusAlimentar(numeProdusActualizat, descriereProdusActualizat, pretProdusActualizat, furnizorProdusActualizat, categorieProdusActualizat, dataExpirareActualizataProdus, stocProdusActualizat);
-                    produsAlimentarService1.actualizeazaProdusAlimentar(idProdusActualizat,produsAlimentarActualizat);
+                    ProdusAlimentar produsAlimentarActualizat = new ProdusAlimentar(numeProdusActualizat, descriereProdusActualizat, pretProdusActualizat, idFurnizorActualizat, idCategorieActualizat, dataExpirareActualizataProdus, stocProdusActualizat);
+                    produsAlimentarService1.update(idProdusActualizat,produsAlimentarActualizat);
                     break;
                 case 11:
                     System.out.println("Introdu id-ul produsului alimentar de sters: ");
                     int idProdusSters = scanner.nextInt();
-                    produsAlimentarService1.stergeProdusAlimentar(idProdusSters);
+                    produsAlimentarService1.remove(idProdusSters);
                     break;
                 case 12:
-                    produsAlimentarService1.afiseazaproduseAlimentare();
+                    produsAlimentarService1.display();
                     break;
                 case 13:
                     System.out.println("Introdu numele retail-ului de adaugat: ");
@@ -395,7 +395,7 @@ public class Main {
                     int stocRetailAdaugat = scanner.nextInt();
 
                     //acum pot crea obiectul de tip ProdusAlimentar si sa-l adaug in lista sa
-                    Retail retailNou = new Retail(numeRetail, descriereRetail, pretRetail, categorieRetail, furnizorRetail, materialRetail, stocRetailAdaugat);
+                    Retail retailNou = new Retail(numeRetail, descriereRetail, pretRetail, idCategorieRetail, idFurnizorRetail, materialRetail, stocRetailAdaugat);
                     retailService1.adaugaRetail(retailNou);
 
                     System.out.println("Retail-ul a fost adaugat cu succes!");
@@ -428,7 +428,7 @@ public class Main {
                     System.out.println("Introdu cantitatea din stoc a retail-ului de actualizat: ");
                     int stocRetailActualizat = scanner.nextInt();
 
-                    Retail retailActualizat = new Retail(numeRetailActualizat, desccriereRetailActualizat, pretRetailActualizat, categorieRetailActualizat, furnizorRetailActualizat, materialRetailActualizat, stocRetailActualizat);
+                    Retail retailActualizat = new Retail(numeRetailActualizat, desccriereRetailActualizat, pretRetailActualizat, idCategorieRetailActualizat, idFurnizorRetailActualizat, materialRetailActualizat, stocRetailActualizat);
                     retailService1.actualizeazaRetail(idRetailActualizat,retailActualizat);
                     break;
                 case 15:
@@ -479,7 +479,7 @@ public class Main {
                     }
 
 
-                    ProdusVanzare produsVanzareNou = new ProdusVanzare(numeProdusVanzare,descriereProdusVanzare,pretProdusVanzare,categorieProdusVanzare,ingredienteCantitate);
+                    ProdusVanzare produsVanzareNou = new ProdusVanzare(numeProdusVanzare,descriereProdusVanzare,pretProdusVanzare,idCategorieProdusVanzare,ingredienteCantitate);
                     produsVanzareService1.adaugaProdusVanzare(produsVanzareNou);
                     System.out.println(ingredienteCantitate);
                     System.out.println(produsVanzareNou);
@@ -531,7 +531,7 @@ public class Main {
                     }
 
 
-                    ProdusVanzare produsVanzareActualizare = new ProdusVanzare(numeProdusVanzareActualizat,descriereProdusVanzareActualizat,pretProdusVanzareActualizat,categorieProdusVanzareActualizat,ingredienteCantitateActualizare);
+                    ProdusVanzare produsVanzareActualizare = new ProdusVanzare(numeProdusVanzareActualizat,descriereProdusVanzareActualizat,pretProdusVanzareActualizat,idCategorieProdusVanzareActualizat,ingredienteCantitateActualizare);
                     produsVanzareService1.actualizeazaProdusVanzare(idProdusVanzareActualizat,produsVanzareActualizare);
                     System.out.println("Produsul a fost actualizat cu succes!");
                     break;

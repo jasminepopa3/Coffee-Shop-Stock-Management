@@ -1,13 +1,12 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class ProdusAlimentar extends Produs {
     private LocalDate dataExpirare;
     private int stoc;
 
-    public ProdusAlimentar(String numeProdus, String descriere, double pret,Furnizor furnizor, Categorie categorie, LocalDate dataExpirare, int stoc) {
+    public ProdusAlimentar(String numeProdus, String descriere, double pret, int furnizor, int categorie, LocalDate dataExpirare, int stoc) {
         super(numeProdus, descriere, pret, categorie, furnizor);
         this.dataExpirare = dataExpirare;
         this.stoc = stoc;

@@ -4,7 +4,7 @@ public class Retail extends Produs {
     private String material;
     private int stoc;
 
-    public Retail(String numeProdus, String descriere, double pret, Categorie categorie, Furnizor furnizor, String material, int stoc) {
+    public Retail(String numeProdus, String descriere, double pret, int categorie, int furnizor, String material, int stoc) {
         super(numeProdus, descriere, pret, categorie, furnizor);
         this.material = material;
         this.stoc = stoc;
