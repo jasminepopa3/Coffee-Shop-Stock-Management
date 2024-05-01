@@ -451,23 +451,24 @@ public class Main {
                     Categorie categorieProdusVanzare = categorieService1.getCategorieByID(idCategorieProdusVanzare);
 
                     //trb sa fac lista de ingrediente-cantitate
-                    Map<ProdusAlimentar, Double> ingredienteCantitate = new HashMap<>();
+                    Map<Integer, Double> ingredienteCantitate = new HashMap<>();
                     boolean continuaAdaugare = true;
 
                     while (continuaAdaugare) {
                         System.out.println("Introdu id-ul produsului alimentar din lista de ingrediente sau tasteaza 0 pentru a iesi: ");
                         int idProdusAlimentar = scanner.nextInt();
-                        ProdusAlimentar produsAlimentar = produsAlimentarService1.getProdusAlimentarByID(idProdusAlimentar);
 
                         if(idProdusAlimentar == 0){
                             continuaAdaugare = false;
-                        }
+                        }else{
+                            ProdusAlimentar produsAlimentar = produsAlimentarService1.getProdusAlimentarByID(idProdusAlimentar);
+
 
                         if (produsAlimentar != null) {
                             System.out.println("Introdu cantitatea pentru produsul alimentar din lista de ingrediente: ");
                             double cantitate = scanner.nextDouble();
 
-                            ingredienteCantitate.put(produsAlimentar, cantitate);
+                            ingredienteCantitate.put(idProdusAlimentar, cantitate);
 
                             System.out.println("Doriți să mai adăugați ingrediente? (da/nu)");
                             String raspuns = scanner.next();
@@ -476,12 +477,34 @@ public class Main {
                                 continuaAdaugare = false;
                             }
                         }
+                        }
                     }
 
 
-                    ProdusVanzare produsVanzareNou = new ProdusVanzare(numeProdusVanzare,descriereProdusVanzare,pretProdusVanzare,idCategorieProdusVanzare,ingredienteCantitate);
-                    produsVanzareService1.adaugaProdusVanzare(produsVanzareNou);
-                    System.out.println(ingredienteCantitate);
+                    // Adăugarea produsului de vânzare fără ingredientele aferente
+                    ProdusVanzare produsVanzareNou = new ProdusVanzare(numeProdusVanzare, descriereProdusVanzare, pretProdusVanzare, idCategorieProdusVanzare);
+                    produsVanzareService1.add(produsVanzareNou);
+
+//                    try {
+//                        Thread.sleep(100); // Întârziere de 100 de milisecunde
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+
+
+
+                    int idProdusVanzare = produsVanzareService1.getLastInsertedProductId();
+
+                    for (Map.Entry<Integer, Double> entry : ingredienteCantitate.entrySet()) {
+                        int idProdusAlimentar = entry.getKey();
+                        double cantitate = entry.getValue();
+                        System.out.println("idprodus vanzare: " + idProdusVanzare);
+                        System.out.println(idProdusAlimentar + " - "  + cantitate + "\n");
+
+                        produsVanzareService1.insertProdusVanzareIngrediente(idProdusVanzare, idProdusAlimentar, cantitate);
+                        System.out.println("am adaugat un ingredient\n");
+                    }
+
                     System.out.println(produsVanzareNou);
                     System.out.println("Produsul a fost adaugat cu succes!");
                     break;
@@ -500,7 +523,7 @@ public class Main {
                     Categorie categorieProdusVanzareActualizat = categorieService1.getCategorieByID(idCategorieProdusVanzareActualizat);
 
                     //trb sa fac lista de ingrediente-cantitate
-                    Map<ProdusAlimentar, Double> ingredienteCantitateActualizare = new HashMap<>();
+                    Map<Integer, Double> ingredienteCantitateActualizare = new HashMap<>();
                     boolean continuaAdaugareActualizare = true;
 
                     while (continuaAdaugareActualizare) {
@@ -519,7 +542,7 @@ public class Main {
                             System.out.println("Introdu cantitatea pentru produsul alimentar din lista de ingrediente: ");
                             double cantitate = scanner.nextDouble();
 
-                            ingredienteCantitateActualizare.put(produsAlimentarDeActualizare, cantitate);
+                            ingredienteCantitateActualizare.put(idProdusAlimentarActualizare, cantitate);
 
                             System.out.println("Doriți să mai adăugați ingrediente? (da/nu)");
                             String raspuns = scanner.next();
@@ -530,17 +553,31 @@ public class Main {
                         }
                     }
 
+                    // Actualizarea produsului de vânzare fără ingredientele aferente
+                    ProdusVanzare produsVanzareActualizare = new ProdusVanzare(numeProdusVanzareActualizat,descriereProdusVanzareActualizat,pretProdusVanzareActualizat,idCategorieProdusVanzareActualizat);
+                    produsVanzareService1.update(idProdusVanzareActualizat,produsVanzareActualizare);
 
-                    ProdusVanzare produsVanzareActualizare = new ProdusVanzare(numeProdusVanzareActualizat,descriereProdusVanzareActualizat,pretProdusVanzareActualizat,idCategorieProdusVanzareActualizat,ingredienteCantitateActualizare);
-                    produsVanzareService1.actualizeazaProdusVanzare(idProdusVanzareActualizat,produsVanzareActualizare);
+                    produsVanzareService1.deleteIngredienteProductById(idProdusVanzareActualizat);
+
+                    for (Map.Entry<Integer, Double> entry : ingredienteCantitateActualizare.entrySet()) {
+                        int idProdusAlimentar = entry.getKey();
+                        double cantitate = entry.getValue();
+
+                        produsVanzareService1.insertProdusVanzareIngrediente(idProdusVanzareActualizat, idProdusAlimentar, cantitate);
+                    }
+
+
+
                     System.out.println("Produsul a fost actualizat cu succes!");
                     break;
                 case 19:
                     System.out.println("Introdu id-ul produsului de vanzare de sters: ");
                     int idProdusVanzareSters = scanner.nextInt();
-                    produsVanzareService1.stergeProdusVanzare(idProdusVanzareSters);
+                    produsVanzareService1.deleteIngredienteProductById(idProdusVanzareSters);
+                    produsVanzareService1.remove(idProdusVanzareSters);
+                    break;
                 case 20:
-                    produsVanzareService1.afiseazaProduseVanzare();
+                    produsVanzareService1.display();
                     break;
                 case 21:
                     System.out.println("Introdu pretul total al achizitiei: ");
