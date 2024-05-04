@@ -357,8 +357,27 @@ public class Main {
                     String numeProdusActualizat = scanner.nextLine();
                     System.out.println("Introdu descrierea produsului alimentar de actualizat: ");
                     String descriereProdusActualizat = scanner.nextLine();
-                    System.out.println("Introdu pretul produsului alimentar de actualizat: ");
-                    double pretProdusActualizat = scanner.nextDouble();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretProdusActualizat = 0.0;
+                    boolean inputValidActualizat = false;
+
+                    while (!inputValidActualizat) {
+                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        String pretInputActualizat = scanner.nextLine();
+
+                        try {
+                            pretProdusActualizat = Double.parseDouble(pretInputActualizat);
+                            inputValidActualizat = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+
                     System.out.println("Introdu id-ul categoriei produsului alimentar: ");
                     int idCategorieActualizat = scanner.nextInt();
                     scanner.nextLine();
@@ -394,8 +413,30 @@ public class Main {
                     String numeRetail = scanner.nextLine();
                     System.out.println("Introdu descrierea retail-ului de adaugat: ");
                     String descriereRetail = scanner.nextLine();
-                    System.out.println("Introdu pretul retail-ului de adaugat: ");
-                    double pretRetail = scanner.nextDouble();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretRetail = 0.0;
+                    boolean inputRetail = false;
+
+                    while (!inputRetail) {
+                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        String pretRetailInput = scanner.nextLine();
+
+                        try {
+                            pretRetail = Double.parseDouble(pretRetailInput);
+                            inputRetail = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+
+//                    System.out.println("Introdu pretul retail-ului de adaugat: ");
+//                    double pretRetail = scanner.nextDouble();
+
                     System.out.println("Introdu id-ul categoriei retail-ului: ");
                     int idCategorieRetail = scanner.nextInt();
                     Categorie categorieRetail = categorieService1.getCategorieByID(idCategorieRetail);
@@ -427,8 +468,30 @@ public class Main {
                     String numeRetailActualizat = scanner.nextLine();
                     System.out.println("Introdu descrierea retail-ului de actualizat: ");
                     String desccriereRetailActualizat = scanner.nextLine();
-                    System.out.println("Introdu pretul retail-ului de actualizat: ");
-                    double pretRetailActualizat = scanner.nextDouble();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretRetailActualizat = 0.0;
+                    boolean inputRetailActualizat = false;
+
+                    while (!inputRetailActualizat) {
+                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        String pretRetailInputActualizat = scanner.nextLine();
+
+                        try {
+                            pretRetailActualizat = Double.parseDouble(pretRetailInputActualizat);
+                            inputRetailActualizat = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+
+//                    System.out.println("Introdu pretul retail-ului de actualizat: ");
+//                    double pretRetailActualizat = scanner.nextDouble();
+
                     System.out.println("Introdu id-ul categoriei retail-ului de actualizat: ");
                     int idCategorieRetailActualizat = scanner.nextInt();
                     scanner.nextLine();
@@ -463,8 +526,30 @@ public class Main {
                     String numeProdusVanzare = scanner.nextLine();
                     System.out.println("Introdu descrierea produsului de vanzare: ");
                     String descriereProdusVanzare = scanner.nextLine();
-                    System.out.println("Introdu pretul produsului de vanzare: ");
-                    double pretProdusVanzare = scanner.nextDouble();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretProdusVanzare = 0.0;
+                    boolean inputProdusVanzare= false;
+
+                    while (!inputProdusVanzare) {
+                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        String pretProdusVanzareInput = scanner.nextLine();
+
+                        try {
+                            pretProdusVanzare = Double.parseDouble(pretProdusVanzareInput);
+                            inputProdusVanzare = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+
+//                    System.out.println("Introdu pretul produsului de vanzare: ");
+//                    double pretProdusVanzare = scanner.nextDouble();
+
                     System.out.println("Introdu id-ul categoriei produsului de vanzare: ");
                     int idCategorieProdusVanzare = scanner.nextInt();
                     Categorie categorieProdusVanzare = categorieService1.getCategorieByID(idCategorieProdusVanzare);
@@ -535,8 +620,30 @@ public class Main {
                     String numeProdusVanzareActualizat = scanner.nextLine();
                     System.out.println("Introdu descrierea produsului de vanzare de actualizat: ");
                     String descriereProdusVanzareActualizat = scanner.nextLine();
-                    System.out.println("Introdu pretul produsului de vanzare de actualizat: ");
-                    double pretProdusVanzareActualizat = scanner.nextDouble();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretProdusVanzareActualizat = 0.0;
+                    boolean inputProdusVanzareActualizat= false;
+
+                    while (!inputProdusVanzareActualizat) {
+                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        String pretProdusVanzareInputActualizat = scanner.nextLine();
+
+                        try {
+                            pretProdusVanzareActualizat = Double.parseDouble(pretProdusVanzareInputActualizat);
+                            inputProdusVanzareActualizat = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+
+//                    System.out.println("Introdu pretul produsului de vanzare de actualizat: ");
+//                    double pretProdusVanzareActualizat = scanner.nextDouble();
+
                     System.out.println("Introdu id-ul categoriei produsului de vanzare de actualizat: ");
                     int idCategorieProdusVanzareActualizat = scanner.nextInt();
                     Categorie categorieProdusVanzareActualizat = categorieService1.getCategorieByID(idCategorieProdusVanzareActualizat);
@@ -599,9 +706,29 @@ public class Main {
                     produsVanzareService1.display();
                     break;
                 case 21:
-                    System.out.println("Introdu pretul total al achizitiei: ");
-                    double pretAchizitie = scanner.nextDouble();
-                    scanner.nextLine();
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretAchizitie = 0.0;
+                    boolean inputAchizitie= false;
+
+                    while (!inputAchizitie) {
+                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        String pretAchizitieInput = scanner.nextLine();
+
+                        try {
+                            pretAchizitie = Double.parseDouble(pretAchizitieInput);
+                            inputAchizitie = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+//                    System.out.println("Introdu pretul total al achizitiei: ");
+//                    double pretAchizitie = scanner.nextDouble();
+
+
                     System.out.println("Introdu data achizitiei (YYYY-MM-DD): ");
                     String dataAchizitieString = scanner.next();
                     LocalDate dataAchizitie = LocalDate.parse(dataAchizitieString);
@@ -720,9 +847,28 @@ public class Main {
                     achizitieService1.display();
                     break;
                 case 24:
-                    System.out.println("Introdu pretul total al vanzarii: ");
-                    double pretVanzare = scanner.nextDouble();
-                    scanner.nextLine();
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretVanzare = 0.0;
+                    boolean inputVanzare= false;
+
+                    while (!inputVanzare) {
+                        System.out.println("Introdu pretul vanzarii: ");
+                        String pretVanzareInput = scanner.nextLine();
+
+                        try {
+                            pretVanzare = Double.parseDouble(pretVanzareInput);
+                            inputVanzare = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+//                    System.out.println("Introdu pretul total al vanzarii: ");
+//                    double pretVanzare = scanner.nextDouble();
+
                     System.out.println("Introdu data vanzarii (YYYY-MM-DD): ");
                     String dataVanzareString = scanner.next();
                     LocalDate dataVanzare = LocalDate.parse(dataVanzareString);
