@@ -364,7 +364,7 @@ public class Main {
                     boolean inputValidActualizat = false;
 
                     while (!inputValidActualizat) {
-                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        System.out.println("Introdu pretul produsului alimentar de actualizat: ");
                         String pretInputActualizat = scanner.nextLine();
 
                         try {
@@ -420,7 +420,7 @@ public class Main {
                     boolean inputRetail = false;
 
                     while (!inputRetail) {
-                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        System.out.println("Introdu pretul retail-ului de adaugat: ");
                         String pretRetailInput = scanner.nextLine();
 
                         try {
@@ -475,7 +475,7 @@ public class Main {
                     boolean inputRetailActualizat = false;
 
                     while (!inputRetailActualizat) {
-                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        System.out.println("Introdu pretul retail-ului de actualizat: ");
                         String pretRetailInputActualizat = scanner.nextLine();
 
                         try {
@@ -533,7 +533,7 @@ public class Main {
                     boolean inputProdusVanzare= false;
 
                     while (!inputProdusVanzare) {
-                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        System.out.println("Introdu pretul produsului de vanzare de adaugat: ");
                         String pretProdusVanzareInput = scanner.nextLine();
 
                         try {
@@ -627,7 +627,7 @@ public class Main {
                     boolean inputProdusVanzareActualizat= false;
 
                     while (!inputProdusVanzareActualizat) {
-                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        System.out.println("Introdu pretul produsului de vanzare de actualizat: ");
                         String pretProdusVanzareInputActualizat = scanner.nextLine();
 
                         try {
@@ -712,7 +712,7 @@ public class Main {
                     boolean inputAchizitie= false;
 
                     while (!inputAchizitie) {
-                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        System.out.println("Introdu pretul achizitiei de adaugat: ");
                         String pretAchizitieInput = scanner.nextLine();
 
                         try {
@@ -853,7 +853,7 @@ public class Main {
                     boolean inputVanzare= false;
 
                     while (!inputVanzare) {
-                        System.out.println("Introdu pretul vanzarii: ");
+                        System.out.println("Introdu pretul vanzarii de adaugat: ");
                         String pretVanzareInput = scanner.nextLine();
 
                         try {
