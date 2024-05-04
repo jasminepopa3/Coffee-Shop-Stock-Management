@@ -304,8 +304,27 @@ public class Main {
                     String numeProdus = scanner.nextLine();
                     System.out.println("Introdu descrierea produsului alimentar de adaugat: ");
                     String descriereProdus = scanner.nextLine();
-                    System.out.println("Introdu pretul produsului alimentar de adaugat: ");
-                    double pretProdus = scanner.nextDouble();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    double pretProdus = 0.0;
+                    boolean inputValid = false;
+
+                    while (!inputValid) {
+                        System.out.println("Introdu pretul produsului alimentar de adaugat: ");
+                        String pretInput = scanner.nextLine();
+
+                        try {
+                            pretProdus = Double.parseDouble(pretInput);
+                            inputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Pretul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+                    ///////////////////////////////////////////////////////////////////////
+
                     System.out.println("Introdu id-ul categoriei produsului alimentar: ");
                     int idCategorie = scanner.nextInt();
                     Categorie categorieProdus = categorieService1.getCategorieByID(idCategorie);
