@@ -36,7 +36,7 @@ public class ProdusVanzareService implements CrudService<ProdusVanzare> {
                 String numeProdus = resultSet.getString("numeProdus");
                 String descriere = resultSet.getString("descriere");
                 double pret = resultSet.getDouble("pret");
-                int categorieId = resultSet.getInt("categorieId");
+                int categorieId = resultSet.getInt("categorie");
                 int id = resultSet.getInt("idProdus");
 
                 return new ProdusVanzare(numeProdus, descriere, pret, categorieId);

@@ -664,7 +664,7 @@ public class Main {
                     break;
                 case 24:
                     System.out.println("Introdu pretul total al vanzarii: ");
-                    int pretVanzare = scanner.nextInt();
+                    double pretVanzare = scanner.nextDouble();
                     scanner.nextLine();
                     System.out.println("Introdu data vanzarii (YYYY-MM-DD): ");
                     String dataVanzareString = scanner.next();
@@ -674,7 +674,7 @@ public class Main {
                     String tipVanzare = scanner.nextLine();
 
                     //trb sa fac lista de produse vanzare - cantitate
-                    Map<ProdusVanzare, Integer> listaProduseVanzareCantitate = new HashMap<>();
+                    Map<Integer, Integer> listaProduseVanzareCantitate = new HashMap<>();
                     boolean continuaAdaugareVanzari = true;
 
                     while (continuaAdaugareVanzari) {
@@ -684,14 +684,14 @@ public class Main {
 
                         if(idProdusVanzareVanzare == 0){
                             continuaAdaugareVanzari = false;
-                        }
+                        }else{
 
                         if (produsVanzareVanzare != null) {
                             System.out.println("Introdu cantitatea pentru produsul de vanzare: ");
                             Integer cantitateVanzare = scanner.nextInt();
                             scanner.nextLine();
 
-                            listaProduseVanzareCantitate.put(produsVanzareVanzare, cantitateVanzare);
+                            listaProduseVanzareCantitate.put(idProdusVanzareVanzare, cantitateVanzare);
 
                             System.out.println("Doriți să mai adăugați produse in achizitie? (da/nu)");
                             String raspunsVanzare = scanner.next();
@@ -700,19 +700,44 @@ public class Main {
                                 continuaAdaugareVanzari = false;
                             }
                         }
+                        }
                     }
 
-                    Vanzare vanzareNoua = new Vanzare(listaProduseVanzareCantitate,pretVanzare,dataVanzare,tipVanzare);
-                    vanzareService1.adaugaVanzare(vanzareNoua);
+                    // Adăugarea produsului de vânzare fără ingredientele aferente
+                    Vanzare vanzareNoua = new Vanzare(pretVanzare,dataVanzare,tipVanzare);
+                    vanzareService1.add(vanzareNoua);
+
+//                    try {
+//                        Thread.sleep(100); // Întârziere de 100 de milisecunde
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+
+
+
+                    int idVanzare = vanzareService1.getLastInsertedId();
+
+                    for (Map.Entry<Integer, Integer> entry : listaProduseVanzareCantitate.entrySet()) {
+                        int idProdusVanzareDinVanzare = entry.getKey();
+                        int cantitate = entry.getValue();
+                        System.out.println("idprodus vanzare din vanzare: " + idProdusVanzareDinVanzare);
+                        System.out.println(idProdusVanzareDinVanzare + " - "  + cantitate + "\n");
+
+                        vanzareService1.insertProdusVanzareCantitate(idVanzare, idProdusVanzareDinVanzare, cantitate);
+                        System.out.println("am adaugat un produs de vanzare\n");
+                    }
+
+
                     System.out.println("Vanzarea a fost adaugata cu succes!");
                     break;
                 case 25:
                     System.out.println("Introdu id-ul vanzarii de sters: ");
                     int idVanzareSters = scanner.nextInt();
-                    vanzareService1.stergeVanzare(idVanzareSters);
+                    vanzareService1.deleteSellsById(idVanzareSters);
+                    vanzareService1.remove(idVanzareSters);
                     break;
                 case 26:
-                    vanzareService1.afiseazaVanzari();
+                    vanzareService1.display();
                     break;
                 default:
                     System.out.println("Opțiune invalidă!");
