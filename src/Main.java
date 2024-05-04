@@ -581,7 +581,7 @@ public class Main {
                     break;
                 case 21:
                     System.out.println("Introdu pretul total al achizitiei: ");
-                    int pretAchizitie = scanner.nextInt();
+                    double pretAchizitie = scanner.nextDouble();
                     scanner.nextLine();
                     System.out.println("Introdu data achizitiei (YYYY-MM-DD): ");
                     String dataAchizitieString = scanner.next();
@@ -591,7 +591,7 @@ public class Main {
                     String tipAchizitie = scanner.nextLine();
 
                     //trb sa fac lista de produse alimentare - cantitate
-                    Map<ProdusAlimentar, Integer> listaProduseAlimentareCantitate = new HashMap<>();
+                    Map<Integer, Integer> listaProduseAlimentareCantitate = new HashMap<>();
                     boolean continuaAdaugareAchizitii = true;
 
                     while (continuaAdaugareAchizitii) {
@@ -608,7 +608,7 @@ public class Main {
                             Integer cantitateAchizitie = scanner.nextInt();
                             scanner.nextLine();
 
-                            listaProduseAlimentareCantitate.put(produsAlimentarAchizitie, cantitateAchizitie);
+                            listaProduseAlimentareCantitate.put(idProdusAlimentarAchizitie, cantitateAchizitie);
 
                             System.out.println("Doriți să mai adăugați produse in achizitie? (da/nu)");
                             String raspunsAchizitie = scanner.next();
@@ -619,9 +619,35 @@ public class Main {
                         }
                     }
 
+                    //
+                    Achizitie achizitieNoua = new Achizitie(pretAchizitie,dataAchizitie,tipAchizitie);
+                    achizitieService1.add(achizitieNoua);
+
+//                    try {
+//                        Thread.sleep(100); // Întârziere de 100 de milisecunde
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+
+
+
+                    int idAchizitie = achizitieService1.getLastInsertedId();
+
+                    for (Map.Entry<Integer, Integer> entry : listaProduseAlimentareCantitate.entrySet()) {
+                        int idProdusAlimentarDinAchizitie = entry.getKey();
+                        int cantitate = entry.getValue();
+                        System.out.println("idprodus alimentar din vanzare: " + idProdusAlimentarDinAchizitie);
+                        System.out.println(idProdusAlimentarDinAchizitie + " - "  + cantitate + "\n");
+
+                        achizitieService1.insertProdusAlimentarCantitate(idAchizitie, idProdusAlimentarDinAchizitie, cantitate);
+                        System.out.println("am adaugat un produs alimentar\n");
+                    }
+
+                    //
+
 
                     //trb sa fac lista de produse retail - cantitate
-                    Map<Retail, Integer> listaRetailCantitate = new HashMap<>();
+                    Map<Integer, Integer> listaRetailCantitate = new HashMap<>();
                     boolean continuaAdaugareAchizitiiRetail = true;
 
                     while (continuaAdaugareAchizitiiRetail) {
@@ -639,7 +665,7 @@ public class Main {
                             Integer cantitateAchizitieRetail = scanner.nextInt();
                             scanner.nextLine();
 
-                            listaRetailCantitate.put(retailAchizitie, cantitateAchizitieRetail);
+                            listaRetailCantitate.put(idRetailAchizitie, cantitateAchizitieRetail);
 
                             System.out.println("Doriți să mai adăugați retail in achizitie? (da/nu)");
                             String raspunsAchizitieRetail = scanner.next();
@@ -650,17 +676,29 @@ public class Main {
                         }
                     }
 
-                    Achizitie achizitieNoua = new Achizitie(listaProduseAlimentareCantitate,listaRetailCantitate,pretAchizitie,dataAchizitie,tipAchizitie);
-                    achizitieService1.adaugaAchizitie(achizitieNoua);
+
+                    for (Map.Entry<Integer, Integer> entry : listaRetailCantitate.entrySet()) {
+                        int idRetailDinAchizitie = entry.getKey();
+                        int cantitate2 = entry.getValue();
+                        System.out.println("idprodus retail din vanzare: " + idRetailDinAchizitie);
+                        System.out.println(idRetailDinAchizitie + " - "  + cantitate2 + "\n");
+
+                        achizitieService1.insertRetailCantitate(idAchizitie, idRetailDinAchizitie, cantitate2);
+                        System.out.println("am adaugat un produs alimentar\n");
+                    }
+
+
                     System.out.println("Achizitia a fost adaugata cu succes!");
                     break;
                 case 22:
                     System.out.println("Introdu id-ul achizitiei de sters: ");
                     int idAchizitieSters = scanner.nextInt();
-                    achizitieService1.stergeAchizitie(idAchizitieSters);
+                    achizitieService1.deleteProdusAlimentarAchizitieById(idAchizitieSters);
+                    achizitieService1.deleteRetailAchizitieById(idAchizitieSters);
+                    achizitieService1.remove(idAchizitieSters);
                     break;
                 case 23:
-                    achizitieService1.afiseazaAchizitii();
+                    achizitieService1.display();
                     break;
                 case 24:
                     System.out.println("Introdu pretul total al vanzarii: ");
