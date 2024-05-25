@@ -690,22 +690,73 @@ public class Main {
 //                    System.out.println("Introdu pretul retail-ului de adaugat: ");
 //                    double pretRetail = scanner.nextDouble();
 
-                    System.out.println("Introdu id-ul categoriei retail-ului: ");
-                    int idCategorieRetail = scanner.nextInt();
-                    Categorie categorieRetail = categorieService1.getCategorieByID(idCategorieRetail);
-                    System.out.println("Introdu id-ul furnizorului de retail: ");
-                    int idFurnizorRetail = scanner.nextInt();
-                    Furnizor furnizorRetail = furnizorService1.getFurnizorByID(idFurnizorRetail);
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idCategorieRetail = 0;
+                    boolean idCategorieRetailInputValid = false;
+
+                    while (!idCategorieRetailInputValid) {
+                        System.out.println("Introdu id-ul categoriei retail-ului: ");
+                        String idCategorieRetailInput = scanner.nextLine();
+
+                        try {
+                            idCategorieRetail = Integer.parseInt(idCategorieRetailInput);
+                            idCategorieRetailInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
+
+//                    Categorie categorieRetail = categorieService1.getCategorieByID(idCategorieRetail);
+
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idFurnizorRetail = 0;
+                    boolean idFurnizorRetailInputValid = false;
+
+                    while (!idFurnizorRetailInputValid) {
+                        System.out.println("Introdu id-ul furnizorului de retail: ");
+                        String idFurnizorRetailInput = scanner.nextLine();
+
+                        try {
+                            idFurnizorRetail = Integer.parseInt(idFurnizorRetailInput);
+                            idFurnizorRetailInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
+//                    Furnizor furnizorRetail = furnizorService1.getFurnizorByID(idFurnizorRetail);
 
 //                    Produs produsNou = new Produs(numeProdus, descriereProdus, pretProdus, categorieProdus, furnizorProdus);
 //                    produsService1.adaugaProdus(produsNou);
 
-                    scanner.nextLine();
                     System.out.println("Introdu materialul retail-ului: ");
                     String materialRetail = scanner.nextLine();
 
-                    System.out.println("Introdu cantitatea din stoc a retail-ului de adaugat: ");
-                    int stocRetailAdaugat = scanner.nextInt();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int stocRetailAdaugat = 0;
+                    boolean stocRetailAdaugatInputValid = false;
+
+                    while (!stocRetailAdaugatInputValid) {
+                        System.out.println("Introdu cantitatea din stoc a retail-ului de adaugat: ");
+                        String stocRetailAdaugatInput = scanner.nextLine();
+
+                        try {
+                            stocRetailAdaugat = Integer.parseInt(stocRetailAdaugatInput);
+                            stocRetailAdaugatInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
 
                     //acum pot crea obiectul de tip ProdusAlimentar si sa-l adaug in lista sa
                     Retail retailNou = new Retail(numeRetail, descriereRetail, pretRetail, idCategorieRetail, idFurnizorRetail, materialRetail, stocRetailAdaugat);
@@ -714,9 +765,25 @@ public class Main {
                     System.out.println("Retail-ul a fost adaugat cu succes!");
                     break;
                 case 14:
-                    System.out.println("Introdu id-ul retail-ului de actualizat: ");
-                    int idRetailActualizat = scanner.nextInt();
-                    scanner.nextLine();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idRetailActualizat = 0;
+                    boolean idRetailActualizatInputValid = false;
+
+                    while (!idRetailActualizatInputValid) {
+                        System.out.println("Introdu id-ul retail-ului de actualizat: ");
+                        String idRetailActualizatInput = scanner.nextLine();
+
+                        try {
+                            idRetailActualizat = Integer.parseInt(idRetailActualizatInput);
+                            idRetailActualizatInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
                     System.out.println("Introdu numele retail-ului de actualizat: ");
                     String numeRetailActualizat = scanner.nextLine();
                     System.out.println("Introdu descrierea retail-ului de actualizat: ");
@@ -745,31 +812,99 @@ public class Main {
 //                    System.out.println("Introdu pretul retail-ului de actualizat: ");
 //                    double pretRetailActualizat = scanner.nextDouble();
 
-                    System.out.println("Introdu id-ul categoriei retail-ului de actualizat: ");
-                    int idCategorieRetailActualizat = scanner.nextInt();
-                    scanner.nextLine();
-                    Categorie categorieRetailActualizat = categorieService1.getCategorieByID(idCategorieRetailActualizat);
-                    System.out.println("Introdu id-ul furnizorului retail-ului de actualizat: ");
-                    int idFurnizorRetailActualizat = scanner.nextInt();
-                    Furnizor furnizorRetailActualizat = furnizorService1.getFurnizorByID(idFurnizorRetailActualizat);
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idCategorieRetailActualizat = 0;
+                    boolean idCategorieRetailActualizatInputValid = false;
+
+                    while (!idCategorieRetailActualizatInputValid) {
+                        System.out.println("Introdu id-ul categoriei retail-ului de actualizat: ");
+                        String idCategorieRetailActualizatInput = scanner.nextLine();
+
+                        try {
+                            idCategorieRetailActualizat = Integer.parseInt(idCategorieRetailActualizatInput);
+                            idCategorieRetailActualizatInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
+//                    Categorie categorieRetailActualizat = categorieService1.getCategorieByID(idCategorieRetailActualizat);
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idFurnizorRetailActualizat = 0;
+                    boolean idFurnizorRetailActualizatInputValid = false;
+
+                    while (!idFurnizorRetailActualizatInputValid) {
+                        System.out.println("Introdu id-ul furnizorului retail-ului de actualizat: ");
+                        String idFurnizorRetailActualizatInput = scanner.nextLine();
+
+                        try {
+                            idFurnizorRetailActualizat = Integer.parseInt(idFurnizorRetailActualizatInput);
+                            idFurnizorRetailActualizatInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
+
+//                    Furnizor furnizorRetailActualizat = furnizorService1.getFurnizorByID(idFurnizorRetailActualizat);
 
 //                    Produs produsNouDeActualizat = new Produs(numeProdusActualizat,descriereProdusActualizat,pretProdusAcrualizat,categorieProdusActualizat,furnizorProdusActualizat);
 //                    produsService1.actualizeazaProdus(idProdusActualizat,produsNouDeActualizat);
 
-                    scanner.nextLine();
                     System.out.println("Introdu materialul retail-ului de actualizat:");
                     String materialRetailActualizat = scanner.nextLine();
 
-                    System.out.println("Introdu cantitatea din stoc a retail-ului de actualizat: ");
-                    int stocRetailActualizat = scanner.nextInt();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int stocRetailActualizat = 0;
+                    boolean stocRetailActualizatInputValid = false;
+
+                    while (!stocRetailActualizatInputValid) {
+                        System.out.println("Introdu cantitatea din stoc a retail-ului de actualizat: ");
+                        String stocRetailActualizatInput = scanner.nextLine();
+
+                        try {
+                            stocRetailActualizat = Integer.parseInt(stocRetailActualizatInput);
+                            stocRetailActualizatInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
 
                     Retail retailActualizat = new Retail(numeRetailActualizat, desccriereRetailActualizat, pretRetailActualizat, idCategorieRetailActualizat, idFurnizorRetailActualizat, materialRetailActualizat, stocRetailActualizat);
                     retailService1.update(idRetailActualizat,retailActualizat);
                     break;
                 case 15:
-                    System.out.println("Introdu id-ul retail-ului de sters: ");
-                    int idRetailSters = scanner.nextInt();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idRetailSters = 0;
+                    boolean idRetailStersInputValid = false;
+
+                    while (!idRetailStersInputValid) {
+                        System.out.println("Introdu id-ul retail-ului de sters: ");
+                        String idRetailStersInput = scanner.nextLine();
+
+                        try {
+                            idRetailSters = Integer.parseInt(idRetailStersInput);
+                            idRetailStersInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
                     retailService1.remove(idRetailSters);
+                    System.out.println("Retail-ul a fost șters cu succes.");
+
                     break;
                 case 16:
                     retailService1.display();
@@ -803,17 +938,50 @@ public class Main {
 //                    System.out.println("Introdu pretul produsului de vanzare: ");
 //                    double pretProdusVanzare = scanner.nextDouble();
 
-                    System.out.println("Introdu id-ul categoriei produsului de vanzare: ");
-                    int idCategorieProdusVanzare = scanner.nextInt();
-                    Categorie categorieProdusVanzare = categorieService1.getCategorieByID(idCategorieProdusVanzare);
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idCategorieProdusVanzare = 0;
+                    boolean idCategorieProdusVanzareInputValid = false;
+
+                    while (!idCategorieProdusVanzareInputValid) {
+                        System.out.println("Introdu id-ul categoriei produsului de vanzare: ");
+                        String idCategorieProdusVanzareInput = scanner.nextLine();
+
+                        try {
+                            idCategorieProdusVanzare = Integer.parseInt(idCategorieProdusVanzareInput);
+                            idCategorieProdusVanzareInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
+//                    Categorie categorieProdusVanzare = categorieService1.getCategorieByID(idCategorieProdusVanzare);
 
                     //trb sa fac lista de ingrediente-cantitate
                     Map<Integer, Double> ingredienteCantitate = new HashMap<>();
                     boolean continuaAdaugare = true;
 
                     while (continuaAdaugare) {
-                        System.out.println("Introdu id-ul produsului alimentar din lista de ingrediente sau tasteaza 0 pentru a iesi: ");
-                        int idProdusAlimentar = scanner.nextInt();
+
+                        //exceptii!!!!!!!!!!!!!
+
+                        int idProdusAlimentar = 0;
+                        boolean idProdusAlimentarInputValid = false;
+
+                        while (!idProdusAlimentarInputValid) {
+                            System.out.println("Introdu id-ul produsului alimentar din lista de ingrediente sau tasteaza 0 pentru a iesi: ");
+                            String idProdusAlimentarInput = scanner.nextLine();
+
+                            try {
+                                idProdusAlimentar = Integer.parseInt(idProdusAlimentarInput);
+                                idProdusAlimentarInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                            } catch (NumberFormatException e) {
+                                // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                            }
+                        }
 
                         if(idProdusAlimentar == 0){
                             continuaAdaugare = false;
@@ -822,13 +990,30 @@ public class Main {
 
 
                         if (produsAlimentar != null) {
-                            System.out.println("Introdu cantitatea pentru produsul alimentar din lista de ingrediente: ");
-                            double cantitate = scanner.nextDouble();
+
+                            //exceptii!!!!!!!!!!!!!
+
+                            double cantitate = 0;
+                            boolean cantitateInputValid = false;
+
+                            while (!cantitateInputValid) {
+                                System.out.println("Introdu cantitatea pentru produsul alimentar din lista de ingrediente: ");
+                                String cantitateInput = scanner.nextLine();
+
+                                try {
+                                    cantitate = Double.parseDouble(cantitateInput);
+                                    cantitateInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                                } catch (NumberFormatException e) {
+                                    // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                    System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                                }
+                            }
+
 
                             ingredienteCantitate.put(idProdusAlimentar, cantitate);
 
                             System.out.println("Doriți să mai adăugați ingrediente? (da/nu)");
-                            String raspuns = scanner.next();
+                            String raspuns = scanner.nextLine();
 
                             if (!raspuns.equalsIgnoreCase("da")) {
                                 continuaAdaugare = false;
@@ -855,20 +1040,36 @@ public class Main {
                     for (Map.Entry<Integer, Double> entry : ingredienteCantitate.entrySet()) {
                         int idProdusAlimentar = entry.getKey();
                         double cantitate = entry.getValue();
-                        System.out.println("idprodus vanzare: " + idProdusVanzare);
-                        System.out.println(idProdusAlimentar + " - "  + cantitate + "\n");
+//                        System.out.println("idprodus vanzare: " + idProdusVanzare);
+//                        System.out.println(idProdusAlimentar + " - "  + cantitate + "\n");
 
                         produsVanzareService1.insertProdusVanzareIngrediente(idProdusVanzare, idProdusAlimentar, cantitate);
-                        System.out.println("am adaugat un ingredient\n");
+//                        System.out.println("am adaugat un ingredient\n");
                     }
 
                     System.out.println(produsVanzareNou);
                     System.out.println("Produsul a fost adaugat cu succes!");
                     break;
                 case 18:
-                    System.out.println("Introdu id-ul produsului de vanzare de actualizat: ");
-                    int idProdusVanzareActualizat = scanner.nextInt();
-                    scanner.nextLine();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idProdusVanzareActualizat = 0;
+                    boolean idProdusVanzareActualizatInputValid= false;
+
+                    while (!idProdusVanzareActualizatInputValid) {
+                        System.out.println("Introdu id-ul produsului de vanzare de actualizat: ");
+                        String idProdusVanzareActualizatInput = scanner.nextLine();
+
+                        try {
+                            idProdusVanzareActualizat = Integer.parseInt(idProdusVanzareActualizatInput);
+                            idProdusVanzareActualizatInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
                     System.out.println("Introdu numele produsului de vanzare de actualizat: ");
                     String numeProdusVanzareActualizat = scanner.nextLine();
                     System.out.println("Introdu descrierea produsului de vanzare de actualizat: ");
@@ -897,39 +1098,89 @@ public class Main {
 //                    System.out.println("Introdu pretul produsului de vanzare de actualizat: ");
 //                    double pretProdusVanzareActualizat = scanner.nextDouble();
 
-                    System.out.println("Introdu id-ul categoriei produsului de vanzare de actualizat: ");
-                    int idCategorieProdusVanzareActualizat = scanner.nextInt();
-                    Categorie categorieProdusVanzareActualizat = categorieService1.getCategorieByID(idCategorieProdusVanzareActualizat);
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idCategorieProdusVanzareActualizat = 0;
+                    boolean idCategorieProdusVanzareActualizatInputValid= false;
+
+                    while (!idCategorieProdusVanzareActualizatInputValid) {
+                        System.out.println("Introdu id-ul categoriei produsului de vanzare de actualizat: ");
+                        String idCategorieProdusVanzareActualizatInput = scanner.nextLine();
+
+                        try {
+                            idCategorieProdusVanzareActualizat = Integer.parseInt(idCategorieProdusVanzareActualizatInput);
+                            idCategorieProdusVanzareActualizatInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar.");
+                        }
+                    }
+
+//                    Categorie categorieProdusVanzareActualizat = categorieService1.getCategorieByID(idCategorieProdusVanzareActualizat);
 
                     //trb sa fac lista de ingrediente-cantitate
                     Map<Integer, Double> ingredienteCantitateActualizare = new HashMap<>();
                     boolean continuaAdaugareActualizare = true;
 
                     while (continuaAdaugareActualizare) {
-                        System.out.println("Introdu id-ul produsului alimentar din lista de ingrediente sau tasteaza 0 pentru a iesi: ");
-                        int idProdusAlimentarActualizare = scanner.nextInt();
 
-                        if(idProdusAlimentarActualizare == 0){
-                            continuaAdaugare = false;
-                            break;
+                        //exceptii!!!!!!!!!!!!!
+
+                        int idProdusAlimentarActualizare = 0;
+                        boolean idProdusAlimentarActualizareInputValid = false;
+
+                        while (!idProdusAlimentarActualizareInputValid) {
+                            System.out.println("Introdu id-ul produsului alimentar din lista de ingrediente sau tasteaza 0 pentru a iesi: ");
+                            String idProdusAlimentarActualizareInput = scanner.nextLine();
+
+                            try {
+                                idProdusAlimentarActualizare = Integer.parseInt(idProdusAlimentarActualizareInput);
+                                idProdusAlimentarActualizareInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                            } catch (NumberFormatException e) {
+                                // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                            }
                         }
+
+                        if (idProdusAlimentarActualizare == 0) {
+                            continuaAdaugareActualizare = false;
+                            break;
+                        }else{
 
                         ProdusAlimentar produsAlimentarDeActualizare = produsAlimentarService1.getProdusAlimentarByID(idProdusAlimentarActualizare);
 
 
                         if (produsAlimentarDeActualizare != null) {
-                            System.out.println("Introdu cantitatea pentru produsul alimentar din lista de ingrediente: ");
-                            double cantitate = scanner.nextDouble();
 
-                            ingredienteCantitateActualizare.put(idProdusAlimentarActualizare, cantitate);
+                            //exceptii!!!!!!!!!!!!!
+
+                            double cantitateProdAlimProdVanzareActualizare = 0.0;
+                            boolean cantitateProdAlimProdVanzareActualizareInputValid = false;
+
+                            while (!cantitateProdAlimProdVanzareActualizareInputValid) {
+                                System.out.println("Introdu cantitatea pentru produsul alimentar din lista de ingrediente:  ");
+                                String cantitateProdAlimProdVanzareActualizareInput = scanner.nextLine();
+
+                                try {
+                                    cantitateProdAlimProdVanzareActualizare = Double.parseDouble(cantitateProdAlimProdVanzareActualizareInput);
+                                    cantitateProdAlimProdVanzareActualizareInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                                } catch (NumberFormatException e) {
+                                    // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                    System.out.println("Id-ul introdus nu este valid. Introdu un numar.");
+                                }
+                            }
+
+                            ingredienteCantitateActualizare.put(idProdusAlimentarActualizare, cantitateProdAlimProdVanzareActualizare);
 
                             System.out.println("Doriți să mai adăugați ingrediente? (da/nu)");
-                            String raspuns = scanner.next();
+                            String raspuns = scanner.nextLine();
 
                             if (!raspuns.equalsIgnoreCase("da")) {
                                 continuaAdaugareActualizare = false;
                             }
                         }
+                    }
                     }
 
                     // Actualizarea produsului de vânzare fără ingredientele aferente
@@ -950,8 +1201,25 @@ public class Main {
                     System.out.println("Produsul a fost actualizat cu succes!");
                     break;
                 case 19:
-                    System.out.println("Introdu id-ul produsului de vanzare de sters: ");
-                    int idProdusVanzareSters = scanner.nextInt();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idProdusVanzareSters = 0;
+                    boolean idProdusVanzareStersInputValid= false;
+
+                    while (!idProdusVanzareStersInputValid) {
+                        System.out.println("Introdu id-ul produsului de vanzare de sters: ");
+                        String idProdusVanzareStersInput = scanner.nextLine();
+
+                        try {
+                            idProdusVanzareSters = Integer.parseInt(idProdusVanzareStersInput);
+                            idProdusVanzareStersInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
                     produsVanzareService1.deleteIngredienteProductById(idProdusVanzareSters);
                     produsVanzareService1.remove(idProdusVanzareSters);
                     break;
@@ -981,41 +1249,102 @@ public class Main {
 //                    System.out.println("Introdu pretul total al achizitiei: ");
 //                    double pretAchizitie = scanner.nextDouble();
 
+                    //exceptii!!!!!!!!!!!!!
 
-                    System.out.println("Introdu data achizitiei (YYYY-MM-DD): ");
-                    String dataAchizitieString = scanner.next();
-                    LocalDate dataAchizitie = LocalDate.parse(dataAchizitieString);
-                    scanner.nextLine();
-                    System.out.println("Introdu tipul tranzactiei (cash/card): ");
-                    String tipAchizitie = scanner.nextLine();
+                    LocalDate dataAchizitie = null;
+                    boolean dataAchizitieInputValid = false;
+
+                    while (!dataAchizitieInputValid) {
+                        System.out.println("Introdu data achizitiei (YYYY-MM-DD): ");
+                        String dataAchizitieInput = scanner.nextLine();
+
+                        try {
+                            dataAchizitie = LocalDate.parse(dataAchizitieInput);
+                            dataAchizitieInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (DateTimeParseException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Data introdusa nu este valida. Introdu o data corecta (YYYY-MM-DD).");
+                        }
+                    }
+
+
+                    String tipAchizitie = "";
+                    boolean inputValidTipAchizitie = false;
+
+                    while (!inputValidTipAchizitie) {
+                        System.out.println("Introdu tipul tranzactiei (cash/card): ");
+                        tipAchizitie = scanner.nextLine().trim().toLowerCase(); // Normalizăm intrarea
+
+                        if (tipAchizitie.equals("cash") || tipAchizitie.equals("card")) {
+                            inputValidTipAchizitie = true; // Intrarea este validă, ieșim din buclă
+                        } else {
+                            System.out.println("Tipul introdus nu este valid. Te rog introdu 'cash' sau 'card'.");
+                        }
+                    }
+
 
                     //trb sa fac lista de produse alimentare - cantitate
                     Map<Integer, Integer> listaProduseAlimentareCantitate = new HashMap<>();
                     boolean continuaAdaugareAchizitii = true;
 
                     while (continuaAdaugareAchizitii) {
-                        System.out.println("Introdu id-ul produsului alimentar din achizitie sau tasteaza 0 pentru a iesi: ");
-                        int idProdusAlimentarAchizitie = scanner.nextInt();
-                        ProdusAlimentar produsAlimentarAchizitie = produsAlimentarService1.getProdusAlimentarByID(idProdusAlimentarAchizitie);
 
-                        if(idProdusAlimentarAchizitie == 0){
-                            continuaAdaugareAchizitii = false;
+                        //exceptii!!!!!!!!!!!!!
+
+                        int idProdusAlimentarAchizitie = 0;
+                        boolean idProdusAlimentarAchizitieInputValid = false;
+
+                        while (!idProdusAlimentarAchizitieInputValid) {
+                            System.out.println("Introdu id-ul produsului alimentar din achizitie sau tasteaza 0 pentru a iesi: ");
+                            String idProdusAlimentarAchizitieInput = scanner.nextLine();
+
+                            try {
+                                idProdusAlimentarAchizitie = Integer.parseInt(idProdusAlimentarAchizitieInput);
+                                idProdusAlimentarAchizitieInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                            } catch (NumberFormatException e) {
+                                // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                            }
                         }
 
+
+                        ProdusAlimentar produsAlimentarAchizitie = produsAlimentarService1.getProdusAlimentarByID(idProdusAlimentarAchizitie);
+
+                        if (idProdusAlimentarAchizitie == 0) {
+                            continuaAdaugareAchizitii = false;
+                        }else{
+
                         if (produsAlimentarAchizitie != null) {
-                            System.out.println("Introdu cantitatea pentru produsul alimentar: ");
-                            Integer cantitateAchizitie = scanner.nextInt();
-                            scanner.nextLine();
+
+                            //exceptii!!!!!!!!!!!!!
+
+                            int cantitateAchizitie = 0;
+                            boolean cantitateAchizitieInputValid = false;
+
+                            while (!cantitateAchizitieInputValid) {
+                                System.out.println("Introdu cantitatea pentru produsul alimentar: ");
+                                String cantitateAchizitieInput = scanner.nextLine();
+
+                                try {
+                                    cantitateAchizitie = Integer.parseInt(cantitateAchizitieInput);
+                                    cantitateAchizitieInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                                } catch (NumberFormatException e) {
+                                    // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                    System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                                }
+                            }
 
                             listaProduseAlimentareCantitate.put(idProdusAlimentarAchizitie, cantitateAchizitie);
 
                             System.out.println("Doriți să mai adăugați produse in achizitie? (da/nu)");
-                            String raspunsAchizitie = scanner.next();
+                            String raspunsAchizitie = scanner.nextLine();
 
                             if (!raspunsAchizitie.equalsIgnoreCase("da")) {
                                 continuaAdaugareAchizitii = false;
                             }
                         }
+
+                    }
                     }
 
                     //
@@ -1035,11 +1364,11 @@ public class Main {
                     for (Map.Entry<Integer, Integer> entry : listaProduseAlimentareCantitate.entrySet()) {
                         int idProdusAlimentarDinAchizitie = entry.getKey();
                         int cantitate = entry.getValue();
-                        System.out.println("idprodus alimentar din vanzare: " + idProdusAlimentarDinAchizitie);
-                        System.out.println(idProdusAlimentarDinAchizitie + " - "  + cantitate + "\n");
+//                        System.out.println("idprodus alimentar din vanzare: " + idProdusAlimentarDinAchizitie);
+//                        System.out.println(idProdusAlimentarDinAchizitie + " - "  + cantitate + "\n");
 
                         achizitieService1.insertProdusAlimentarCantitate(idAchizitie, idProdusAlimentarDinAchizitie, cantitate);
-                        System.out.println("am adaugat un produs alimentar\n");
+//                        System.out.println("am adaugat un produs alimentar\n");
                     }
 
                     //
@@ -1050,48 +1379,99 @@ public class Main {
                     boolean continuaAdaugareAchizitiiRetail = true;
 
                     while (continuaAdaugareAchizitiiRetail) {
-                        System.out.println("Introdu id-ul retail-ului din achizitie sau tasteaza 0 pentru a iesi: ");
-                        int idRetailAchizitie = scanner.nextInt();
+
+                        //exceptii!!!!!!!!!!!!!
+
+                        int idRetailAchizitie = 0;
+                        boolean idRetailAchizitieInputValid = false;
+
+                        while (!idRetailAchizitieInputValid) {
+                            System.out.println("Introdu id-ul retail-ului din achizitie sau tasteaza 0 pentru a iesi: ");
+                            String idRetailAchizitieInput = scanner.nextLine();
+
+                            try {
+                                idRetailAchizitie = Integer.parseInt(idRetailAchizitieInput);
+                                idRetailAchizitieInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                            } catch (NumberFormatException e) {
+                                // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                            }
+                        }
+
                         // Obțineți produsul alimentar folosind id-ul introdus
                         Retail retailAchizitie = retailService1.getRetailByID(idRetailAchizitie);
 
-                        if(idRetailAchizitie == 0){
+                        if (idRetailAchizitie == 0) {
                             continuaAdaugareAchizitiiRetail = false;
-                        }
+                        }else{
 
                         if (retailAchizitie != null) {
-                            System.out.println("Introdu cantitatea pentru retail-ul achizitionat: ");
-                            Integer cantitateAchizitieRetail = scanner.nextInt();
-                            scanner.nextLine();
+
+                            //exceptii!!!!!!!!!!!!!
+
+                            int cantitateAchizitieRetail = 0;
+                            boolean cantitateAchizitieRetailInputValid = false;
+
+                            while (!cantitateAchizitieRetailInputValid) {
+                                System.out.println("Introdu cantitatea pentru retail-ul achizitionat: ");
+                                String cantitateAchizitieRetailInput = scanner.nextLine();
+
+                                try {
+                                    cantitateAchizitieRetail = Integer.parseInt(cantitateAchizitieRetailInput);
+                                    cantitateAchizitieRetailInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                                } catch (NumberFormatException e) {
+                                    // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                    System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                                }
+                            }
 
                             listaRetailCantitate.put(idRetailAchizitie, cantitateAchizitieRetail);
 
                             System.out.println("Doriți să mai adăugați retail in achizitie? (da/nu)");
-                            String raspunsAchizitieRetail = scanner.next();
+                            String raspunsAchizitieRetail = scanner.nextLine();
 
                             if (!raspunsAchizitieRetail.equalsIgnoreCase("da")) {
                                 continuaAdaugareAchizitiiRetail = false;
                             }
                         }
+
+                    }
                     }
 
 
                     for (Map.Entry<Integer, Integer> entry : listaRetailCantitate.entrySet()) {
                         int idRetailDinAchizitie = entry.getKey();
                         int cantitate2 = entry.getValue();
-                        System.out.println("idprodus retail din vanzare: " + idRetailDinAchizitie);
-                        System.out.println(idRetailDinAchizitie + " - "  + cantitate2 + "\n");
+//                        System.out.println("idprodus retail din vanzare: " + idRetailDinAchizitie);
+//                        System.out.println(idRetailDinAchizitie + " - "  + cantitate2 + "\n");
 
                         achizitieService1.insertRetailCantitate(idAchizitie, idRetailDinAchizitie, cantitate2);
-                        System.out.println("am adaugat un produs alimentar\n");
+//                        System.out.println("am adaugat un produs alimentar\n");
                     }
 
 
                     System.out.println("Achizitia a fost adaugata cu succes!");
                     break;
                 case 22:
-                    System.out.println("Introdu id-ul achizitiei de sters: ");
-                    int idAchizitieSters = scanner.nextInt();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idAchizitieSters = 0;
+                    boolean idAchizitieStersInputValid= false;
+
+                    while (!idAchizitieStersInputValid) {
+                        System.out.println("Introdu id-ul achizitiei de sters: ");
+                        String idAchizitieStersInput = scanner.nextLine();
+
+                        try {
+                            idAchizitieSters = Integer.parseInt(idAchizitieStersInput);
+                            idAchizitieStersInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
                     achizitieService1.deleteProdusAlimentarAchizitieById(idAchizitieSters);
                     achizitieService1.deleteRetailAchizitieById(idAchizitieSters);
                     achizitieService1.remove(idAchizitieSters);
@@ -1122,20 +1502,63 @@ public class Main {
 //                    System.out.println("Introdu pretul total al vanzarii: ");
 //                    double pretVanzare = scanner.nextDouble();
 
-                    System.out.println("Introdu data vanzarii (YYYY-MM-DD): ");
-                    String dataVanzareString = scanner.next();
-                    LocalDate dataVanzare = LocalDate.parse(dataVanzareString);
-                    scanner.nextLine();
-                    System.out.println("Introdu tipul tranzactiei (cash/card): ");
-                    String tipVanzare = scanner.nextLine();
+                    //exceptii!!!!!!!!!!!!!
+
+                    LocalDate dataVanzare = null;
+                    boolean dataVanzareInputValid = false;
+
+                    while (!dataVanzareInputValid) {
+                        System.out.println("Introdu data vanzarii (YYYY-MM-DD): ");
+                        String dataVanzareInput = scanner.nextLine();
+
+                        try {
+                            dataVanzare = LocalDate.parse(dataVanzareInput);
+                            dataVanzareInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (DateTimeParseException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Data introdusa nu este valida. Introdu o data corecta (YYYY-MM-DD).");
+                        }
+                    }
+
+
+                    String tipVanzare = "";
+                    boolean tipVanzareInputValid = false;
+
+                    while (!tipVanzareInputValid) {
+                        System.out.println("Introdu tipul tranzactiei (cash/card): ");
+                        tipVanzare = scanner.nextLine().trim().toLowerCase(); // Normalizăm intrarea
+
+                        if (tipVanzare.equals("cash") || tipVanzare.equals("card")) {
+                            tipVanzareInputValid = true; // Intrarea este validă, ieșim din buclă
+                        } else {
+                            System.out.println("Tipul introdus nu este valid. Te rog introdu 'cash' sau 'card'.");
+                        }
+                    }
 
                     //trb sa fac lista de produse vanzare - cantitate
                     Map<Integer, Integer> listaProduseVanzareCantitate = new HashMap<>();
                     boolean continuaAdaugareVanzari = true;
 
                     while (continuaAdaugareVanzari) {
-                        System.out.println("Introdu id-ul produsului de vanzare din vanzare sau tasteaza 0 pentru a iesi: ");
-                        int idProdusVanzareVanzare = scanner.nextInt();
+
+                        //exceptii!!!!!!!!!!!!!
+
+                        int idProdusVanzareVanzare = 0;
+                        boolean idProdusVanzareVanzareInputValid= false;
+
+                        while (!idProdusVanzareVanzareInputValid) {
+                            System.out.println("Introdu id-ul produsului de vanzare din vanzare sau tasteaza 0 pentru a iesi: ");
+                            String idProdusVanzareVanzareInput = scanner.nextLine();
+
+                            try {
+                                idProdusVanzareVanzare = Integer.parseInt(idProdusVanzareVanzareInput);
+                                idProdusVanzareVanzareInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                            } catch (NumberFormatException e) {
+                                // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                            }
+                        }
+
                         ProdusVanzare produsVanzareVanzare = produsVanzareService1.getProdusVanzareByID(idProdusVanzareVanzare);
 
                         if(idProdusVanzareVanzare == 0){
@@ -1143,14 +1566,29 @@ public class Main {
                         }else{
 
                         if (produsVanzareVanzare != null) {
-                            System.out.println("Introdu cantitatea pentru produsul de vanzare: ");
-                            Integer cantitateVanzare = scanner.nextInt();
-                            scanner.nextLine();
+
+                            //exceptii!!!!!!!!!!!!!
+
+                            int cantitateVanzare = 0;
+                            boolean cantitateVanzareInputValid= false;
+
+                            while (!cantitateVanzareInputValid) {
+                                System.out.println("Introdu cantitatea pentru produsul de vanzare: ");
+                                String cantitateVanzareInput = scanner.nextLine();
+
+                                try {
+                                    cantitateVanzare = Integer.parseInt(cantitateVanzareInput);
+                                    cantitateVanzareInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                                } catch (NumberFormatException e) {
+                                    // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                                    System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                                }
+                            }
 
                             listaProduseVanzareCantitate.put(idProdusVanzareVanzare, cantitateVanzare);
 
                             System.out.println("Doriți să mai adăugați produse in achizitie? (da/nu)");
-                            String raspunsVanzare = scanner.next();
+                            String raspunsVanzare = scanner.nextLine();
 
                             if (!raspunsVanzare.equalsIgnoreCase("da")) {
                                 continuaAdaugareVanzari = false;
@@ -1176,19 +1614,36 @@ public class Main {
                     for (Map.Entry<Integer, Integer> entry : listaProduseVanzareCantitate.entrySet()) {
                         int idProdusVanzareDinVanzare = entry.getKey();
                         int cantitate = entry.getValue();
-                        System.out.println("idprodus vanzare din vanzare: " + idProdusVanzareDinVanzare);
-                        System.out.println(idProdusVanzareDinVanzare + " - "  + cantitate + "\n");
+//                        System.out.println("idprodus vanzare din vanzare: " + idProdusVanzareDinVanzare);
+//                        System.out.println(idProdusVanzareDinVanzare + " - "  + cantitate + "\n");
 
                         vanzareService1.insertProdusVanzareCantitate(idVanzare, idProdusVanzareDinVanzare, cantitate);
-                        System.out.println("am adaugat un produs de vanzare\n");
+//                        System.out.println("am adaugat un produs de vanzare\n");
                     }
 
 
                     System.out.println("Vanzarea a fost adaugata cu succes!");
                     break;
                 case 25:
-                    System.out.println("Introdu id-ul vanzarii de sters: ");
-                    int idVanzareSters = scanner.nextInt();
+
+                    //exceptii!!!!!!!!!!!!!
+
+                    int idVanzareSters = 0;
+                    boolean idVanzareStersInputValid= false;
+
+                    while (!idVanzareStersInputValid) {
+                        System.out.println("Introdu id-ul vanzarii de sters: ");
+                        String idVanzareStersInput = scanner.nextLine();
+
+                        try {
+                            idVanzareSters = Integer.parseInt(idVanzareStersInput);
+                            idVanzareStersInputValid = true; // Prețul a fost introdus corect, ieșim din buclă
+                        } catch (NumberFormatException e) {
+                            // Dacă conversia din String în double eșuează, afișăm un mesaj și continuăm bucla
+                            System.out.println("Id-ul introdus nu este valid. Introdu un numar natural.");
+                        }
+                    }
+
                     vanzareService1.deleteSellsById(idVanzareSters);
                     vanzareService1.remove(idVanzareSters);
                     break;
