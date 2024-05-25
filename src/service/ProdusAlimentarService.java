@@ -148,4 +148,28 @@ public class ProdusAlimentarService implements CrudService<ProdusAlimentar> {
         }
 
     }
+
+    public boolean areProduseVanzareAsociate(int idProdus) {
+        try {
+            Connection connection = DatabaseConfiguration.getDatabaseConnection();
+
+            // Verificăm tabela produsvanzare_ingrediente
+            String queryProdusalimentar = "SELECT * FROM produsvanzare_ingrediente WHERE idProdusAlimentar = ?";
+            PreparedStatement statementProdusalimentar = connection.prepareStatement(queryProdusalimentar);
+            statementProdusalimentar.setInt(1, idProdus);
+            ResultSet resultSetProdusalimentar = statementProdusalimentar.executeQuery();
+
+            if (resultSetProdusalimentar.next()) {
+                return true; // Dacă găsim cel puțin un rând în produsalimentar, returnăm true
+            }
+
+
+            // Dacă nu găsim niciun produs asociat, returnăm false
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // În cazul unei excepții, putem considera că există produse asociate (pentru a evita ștergerea greșită)
+            return true;
+        }
+    }
 }

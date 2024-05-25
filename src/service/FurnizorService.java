@@ -135,5 +135,39 @@ public class FurnizorService implements CrudService<Furnizor> {
         }
     }
 
+    public boolean areProduseAsociate(int idFurnizor) {
+        try {
+            Connection connection = DatabaseConfiguration.getDatabaseConnection();
+
+            // Verificăm tabela produsalimentar
+            String queryProdusalimentar = "SELECT * FROM produsalimentar WHERE furnizorId = ?";
+            PreparedStatement statementProdusalimentar = connection.prepareStatement(queryProdusalimentar);
+            statementProdusalimentar.setInt(1, idFurnizor);
+            ResultSet resultSetProdusalimentar = statementProdusalimentar.executeQuery();
+
+            if (resultSetProdusalimentar.next()) {
+                return true; // Dacă găsim cel puțin un rând în produsalimentar, returnăm true
+            }
+
+
+            // Verificăm tabela retail
+            String queryRetail = "SELECT * FROM retail WHERE furnizorId = ?";
+            PreparedStatement statementRetail = connection.prepareStatement(queryRetail);
+            statementRetail.setInt(1, idFurnizor);
+            ResultSet resultSetRetail = statementRetail.executeQuery();
+
+            if (resultSetRetail.next()) {
+                return true; // Dacă găsim cel puțin un rând în retail, returnăm true
+            }
+
+            // Dacă nu găsim niciun produs asociat, returnăm false
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // În cazul unei excepții, putem considera că există produse asociate (pentru a evita ștergerea greșită)
+            return true;
+        }
+    }
+
 
 }

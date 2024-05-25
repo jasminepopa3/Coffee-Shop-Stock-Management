@@ -130,4 +130,49 @@ public class CategorieService implements CrudService<Categorie> {
         }
     }
 
+    public boolean areProduseAsociate(int idCategorie) {
+        try {
+            Connection connection = DatabaseConfiguration.getDatabaseConnection();
+
+            // Verificăm tabela produsalimentar
+            String queryProdusalimentar = "SELECT * FROM produsalimentar WHERE categorieId = ?";
+            PreparedStatement statementProdusalimentar = connection.prepareStatement(queryProdusalimentar);
+            statementProdusalimentar.setInt(1, idCategorie);
+            ResultSet resultSetProdusalimentar = statementProdusalimentar.executeQuery();
+
+            if (resultSetProdusalimentar.next()) {
+                return true; // Dacă găsim cel puțin un rând în produsalimentar, returnăm true
+            }
+
+            // Verificăm tabela produsvanzare
+            String queryProdusvanzare = "SELECT * FROM produsvanzare WHERE categorie = ?";
+            PreparedStatement statementProdusvanzare = connection.prepareStatement(queryProdusvanzare);
+            statementProdusvanzare.setInt(1, idCategorie);
+            ResultSet resultSetProdusvanzare = statementProdusvanzare.executeQuery();
+
+            if (resultSetProdusvanzare.next()) {
+                return true; // Dacă găsim cel puțin un rând în produsvanzare, returnăm true
+            }
+
+            // Verificăm tabela retail
+            String queryRetail = "SELECT * FROM retail WHERE categorieId = ?";
+            PreparedStatement statementRetail = connection.prepareStatement(queryRetail);
+            statementRetail.setInt(1, idCategorie);
+            ResultSet resultSetRetail = statementRetail.executeQuery();
+
+            if (resultSetRetail.next()) {
+                return true; // Dacă găsim cel puțin un rând în retail, returnăm true
+            }
+
+            // Dacă nu găsim niciun produs asociat, returnăm false
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // În cazul unei excepții, putem considera că există produse asociate (pentru a evita ștergerea greșită)
+            return true;
+        }
+    }
+
+
+
 }
