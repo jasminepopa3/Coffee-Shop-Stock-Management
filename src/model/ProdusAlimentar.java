@@ -42,18 +42,4 @@ public class ProdusAlimentar extends Produs {
                 '}';
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        if (!super.equals(o)) return false; // Verifică egalitatea atributelor moștenite
-//        ProdusAlimentar that = (ProdusAlimentar) o;
-//        return Objects.equals(dataExpirare, that.dataExpirare) &&
-//                stoc == that.stoc;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(super.hashCode(), dataExpirare, stoc);
-//    }
 }

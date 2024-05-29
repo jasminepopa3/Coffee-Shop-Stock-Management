@@ -21,7 +21,6 @@ public class VanzareService implements CrudService<Vanzare> {
         this.vanzari = vanzari;
     }
 
-
     public int getLastInsertedId() {
         String selectSql = "SELECT idVanzare FROM vanzare ORDER BY idVanzare DESC LIMIT 1";
 

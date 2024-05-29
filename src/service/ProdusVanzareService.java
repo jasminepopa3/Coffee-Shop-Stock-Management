@@ -2,12 +2,9 @@ package service;
 
 import config.DatabaseConfiguration;
 import interfaces.CrudService;
-import model.ProdusAlimentar;
 import model.ProdusVanzare;
-import model.Retail;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

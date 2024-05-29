@@ -6,11 +6,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class AuditService {
-    // tot singleton si acest service
     private static AuditService instanta = null;
     private String path = "./src/auditLog/AuditLog.csv";
     private ScrieCSVService scrieCSV = ScrieCSVService.getInstance();
-    // constructor privat
+
     private AuditService() { }
 
     public static AuditService getInstance() {

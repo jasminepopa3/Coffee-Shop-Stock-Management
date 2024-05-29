@@ -12,11 +12,6 @@ import java.util.List;
 public class CategorieService implements CrudService<Categorie> {
     private List<Categorie> categorii;
 
-    //când cream o nouă instanță a clasei CategorieService,
-    // o listă nouă de categorii va fi creată și asociată instanței respective.
-    // Această listă va fi utilizată pentru a adăuga, actualiza și șterge categorii în
-    // cadrul serviciului CategorieService
-    // Constructor pentru inițializare cu o listă goală de categorii
     public CategorieService() {
         this.categorii = new ArrayList<>();
     }
@@ -25,7 +20,6 @@ public class CategorieService implements CrudService<Categorie> {
     public CategorieService(List<Categorie> categorii) {
         this.categorii = categorii;
     }
-
 
 
     @Override

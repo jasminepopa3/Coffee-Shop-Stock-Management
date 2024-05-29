@@ -1,9 +1,6 @@
 package service;
 import config.DatabaseConfiguration;
 import interfaces.CrudService;
-import model.Categorie;
-import model.Furnizor;
-import model.Produs;
 import model.ProdusAlimentar;
 
 import java.sql.*;
