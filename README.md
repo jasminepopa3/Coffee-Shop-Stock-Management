@@ -36,7 +36,7 @@ Manage your coffee shop's stock seamlessly with the following features:
 - **Delete** selling products
 - **List** all selling products
 
-### Transactions 💳
+### Acquisitions 💳
 - **Create** new acquisitions
 - **Update** existing acquisitions
 - **Delete** acquisitions
